@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/fractaletc/build/static/css/main.cce9c4b3.chunk.css",
+    "main.js": "/fractaletc/build/static/js/main.09b664be.chunk.js",
+    "main.js.map": "/fractaletc/build/static/js/main.09b664be.chunk.js.map",
+    "runtime-main.js": "/fractaletc/build/static/js/runtime-main.e79b2d39.js",
+    "runtime-main.js.map": "/fractaletc/build/static/js/runtime-main.e79b2d39.js.map",
+    "static/js/2.2a3bdd68.chunk.js": "/fractaletc/build/static/js/2.2a3bdd68.chunk.js",
+    "static/js/2.2a3bdd68.chunk.js.map": "/fractaletc/build/static/js/2.2a3bdd68.chunk.js.map",
+    "index.html": "/fractaletc/build/index.html",
+    "precache-manifest.55182d47ac968b294252684d298e708a.js": "/fractaletc/build/precache-manifest.55182d47ac968b294252684d298e708a.js",
+    "service-worker.js": "/fractaletc/build/service-worker.js",
+    "static/css/main.cce9c4b3.chunk.css.map": "/fractaletc/build/static/css/main.cce9c4b3.chunk.css.map",
+    "static/js/2.2a3bdd68.chunk.js.LICENSE": "/fractaletc/build/static/js/2.2a3bdd68.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e79b2d39.js",
+    "static/js/2.2a3bdd68.chunk.js",
+    "static/css/main.cce9c4b3.chunk.css",
+    "static/js/main.09b664be.chunk.js"
+  ]
+}

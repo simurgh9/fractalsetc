@@ -1,0 +1,5 @@
+# Ignore file named `jsconfig.json`
+jsconfig.json
+
+# Ignore folder named `node_modules`
+node_modules/
