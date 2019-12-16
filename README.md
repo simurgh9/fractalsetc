@@ -187,7 +187,7 @@ The website gets:
 
 <img src="./readme_media/sierpinski_triangle_static.png" width="350" />
 
-What if we wanted to change the upper bound for the number of recursions? We can look at the implementation of the [Box Fractal](src/model/fractals/Mondrian.js),
+What if we wanted to change the upper bound for the number of recursions? We can look at the implementation of the [Box Fractal](src/model/fractals/BoxFractal.js),
 
 ```javascript
 ...
