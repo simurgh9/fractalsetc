@@ -6,7 +6,7 @@ class SierpinskiTri extends AbstractFractal {
   set(x, y, w, h, ls=new LinkedList(), r = 0) {
     if (r >= this.recursionDepth) {
       let vertices = [[x + w / 2, y], [x, y + h], [x + w, y + h]];
-      let p = new Point(x, y, w, h, vertices, this.flipCoin());
+      let p = new Point(x, y, w, h, vertices);
       ls.add(p);
       return ls;
     }
@@ -18,10 +18,6 @@ class SierpinskiTri extends AbstractFractal {
 
   getTitle() {
     return 'Sierpinski\'s Triangle';
-  }
-
-  flipCoin() {
-    return Math.random() >= 0.33;
   }
 }
 

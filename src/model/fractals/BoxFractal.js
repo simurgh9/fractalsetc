@@ -10,7 +10,7 @@ class BoxFractal extends AbstractFractal {
   
   set(x, y, w, h, ls = new LinkedList(), r = 0) {
     if (r >= this.recursionDepth) {
-      let p = new Point(x, y, w, h, null, this.flipCoin());
+      let p = new Point(x, y, w, h);
       ls.add(p);
       return ls;
     }
@@ -24,10 +24,6 @@ class BoxFractal extends AbstractFractal {
 
   getTitle() {
     return 'Box Fractal';
-  }
-
-  flipCoin() {
-    return Math.random() >= 0.33;
   }
 }
 
