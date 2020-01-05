@@ -206,7 +206,7 @@ Observe how in the constructor we immediately pass everything to the parent but 
 
 ## Conclusion
 
-I hope this is a good starting point for someone who wants to add a fractal to the website. Test your fractal with different recursion depths on the development site and try resizing the screen which should redraw the fractal according to the new dimensions. Once everything is good, go ahead and run `npm run build` and push your changes to be published on the official site.
+I hope this is a good starting point for someone who wants to add a fractal to the website. Test your fractal with different recursion depths on the development site and try resizing the screen which should redraw the fractal according to the new dimensions. Once everything is good, push your changes to be published on the official site.
 
 ## License
 
