@@ -194,8 +194,7 @@ What if we wanted to change the upper bound for the number of recursions? We can
 
 class BoxFractal extends AbstractFractal {
   constructor(width, height, recursionDepth, origin) {
-    super(width, height, recursionDepth, origin);
-    this.MAX_DEPTH = 7;
+    super(width, height, 7, origin);
   }
 
   set(x, y, w, h, ls = new LinkedList(), r = 0) {
@@ -203,7 +202,7 @@ class BoxFractal extends AbstractFractal {
 ...
 ```
 
-Observe how in the constructor we immediately pass everything to the parent and then set the instance variable (or constant) we want to set which in this case is `MAX_DEPTH`.
+Observe how in the constructor we immediately pass everything to the parent but instead of passing `recursionDepth`, we pass 7. This will cause the maximum number of recursions to be 7.
 
 ## Conclusion
 
