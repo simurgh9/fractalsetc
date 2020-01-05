@@ -9,7 +9,6 @@
 
 @media only screen and (max-width: 750px) {
   #header > #slider, #header > #dropdown {
-      border: 3px solid green;
 	  display: block;
 	  margin: auto;
 	  float: none;

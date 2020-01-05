@@ -1,22 +1,23 @@
 class AbstractFractal {
-  constructor(width, height, recursionDepth, origin) {
+  constructor(width, height, maxDepth, origin) {
     if (this.constructor === AbstractFractal) {
       throw new Error("Abstract classes can't be instantiated.");
     }
-    this.MAX_DEPTH = 8;
+    this.maxDepth = maxDepth;
     this.points = null;
     this.width = width;
     this.height = height;
     this.origin = origin;
     this.depthToPoints = new Array(10+1);
     this.recursionDepth = -1;
-    this.setRecursionDepth(recursionDepth);
+    this.setDepthToDefault();
   }
-
+  
+  setDepthToDefault() {
+    this.setRecursionDepth(Math.round(this.maxDepth/2));
+  }
+  
   setRecursionDepth(depth) {
-    if(depth > this.MAX_DEPTH) {
-      depth = this.MAX_DEPTH;
-    }
     this.recursionDepth = depth;
     this.setPoints();
   }
@@ -60,7 +61,7 @@ class AbstractFractal {
       height: this.getHeight(),
       points: this.getPoints(),
       recursionDepth: this.getRecursionDepth(),
-      maxRecursionDepth: this.MAX_DEPTH,
+      maxRecursionDepth: this.maxDepth,
     };
   }
   

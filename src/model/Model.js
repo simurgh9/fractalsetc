@@ -2,28 +2,13 @@ import * as Fractals from './fractals/FractalIndex.js';
 
 class Model {
   constructor(width, height,
-              recursionDepth=-1,
-              origin=[0, 0],
-              name = null) {
-    this.DEFAULT_DEPTH = 4;
-    this.DEFAULT_FRACTAL_NAME = 'SierpinskiTri';
+              origin=[0, 0]) {
+    this.DEFAULT_MAX_DEPTH = 8;
     
-    if (recursionDepth < 0) {
-      this.setDepthToDefault();
-    } else {
-      this.recursionDepth = recursionDepth;
-    }
-
     this.width = width;
     this.height = height;
     this.origin = origin;
     this.fractal = null;
-
-    if (!name) {
-      this.setNameAndFractal(this.DEFAULT_FRACTAL_NAME);
-    } else {
-      this.setNameAndFractal(name);
-    }
     
     this.options = {};
     this.setOptions();
@@ -34,6 +19,7 @@ class Model {
       let currFrac = new Fractals[name](0, 0, 0, [0, 0]);
       this.options[name] = currFrac.getTitle();
     }
+    this.setNameAndFractal(Object.keys(this.options)[0]);
   }
 
   setNameAndFractal(name) {
@@ -42,12 +28,9 @@ class Model {
       this.name](
         this.width,
         this.height,
-        this.recursionDepth,
+        this.DEFAULT_MAX_DEPTH,
         this.origin);
-  }
-  
-  setDepthToDefault() {
-    this.recursionDepth = this.DEFAULT_DEPTH;
+    this.recursionDepth = this.fractal.getRecursionDepth();
   }
   
   setRecursionDepth(depth) {
@@ -84,13 +67,10 @@ class Model {
   updateFractal(name, width, height, depth) {
     this.width  = width  ? width  : this.width;
     this.height = height ? height : this.height;
-
-    // console.log([name, width, height, depth]);
     
-    if(name && this.getName() !== name) {
-      this.setDepthToDefault();
+    if(name !== null && this.getName() !== name) {
       this.setNameAndFractal(name);
-    } else if (depth && this.getRecursionDepth() !== depth) {
+    } else if (depth !== null && this.getRecursionDepth() !== depth) {
       this.setRecursionDepth(depth);
     } else {
       this.setDimensions(this.width, this.height);

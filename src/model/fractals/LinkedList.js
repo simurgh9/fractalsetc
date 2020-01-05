@@ -28,6 +28,25 @@ class LinkedList {
     return this.length === 0;
   }
   
+  tail() {
+    if (this.isEmpty())
+      return null;
+    return this.current.getValue();
+  }
+
+  slice(begin, end = null) {
+    if (!end)
+      end = this.length;
+    let ret = new LinkedList();
+    let i = 0;
+    for (const nodeValue of this) {
+      if (begin <= i && i < end)
+        ret.add(nodeValue);
+      i++;
+    }
+    return ret;
+  }
+  
   add(value) {
     if (this.isEmpty()) {
       this.head = new ListNode(value, null);
@@ -65,14 +84,22 @@ class LinkedList {
 
 
 // let ls = new LinkedList();
-// ls.add(1);
-// ls.add('a');
-// ls.add([-1, 3.14]);
-// ls.add({});
-// console.log(ls.toArray());
+// ls.add('ant');
+// ls.add('bison');
+// ls.add('camel');
+// ls.add('duck');
+// ls.add('elephant');
 
-// for(const e of ls) {
+// for (const e of ls)
 //   console.log(e);
-// }
+
+// console.log('To Array: ' + ls.toArray());
+// console.log('Tail: ' + ls.tail());
+// // expected output: Array ["camel", "duck", "elephant"]
+// console.log(ls.slice(2).toArray());
+// // expected output: Array ["camel", "duck"]
+// console.log(ls.slice(2, 4).toArray());
+// // expected output: Array ["bison", "camel", "duck", "elephant"]
+// console.log(ls.slice(1, 5).toArray());
 
 export default LinkedList;

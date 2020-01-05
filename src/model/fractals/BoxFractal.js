@@ -4,8 +4,7 @@ import AbstractFractal from './AbstractFractal.js';
 
 class BoxFractal extends AbstractFractal {
   constructor(width, height, recursionDepth, origin) {
-    super(width, height, recursionDepth, origin);
-    this.MAX_DEPTH = 7;
+    super(width, height, 7, origin);
   }
   
   set(x, y, w, h, ls = new LinkedList(), r = 0) {

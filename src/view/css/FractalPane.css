@@ -1,14 +1,14 @@
 #fractal_pane {
-	background-color: inherit;
+	/* border: 3px solid red; */
+	background-color:  inherit;
 	display: block;
-	width: 98vw;
-	height: 92vh;
 	margin: auto;
+	height:90vh;
+    width:90vw;
 }
 
 @media only screen and (max-width: 750px) {
-  #fractal_pane {
-      width: 90vw;
-	  height: 75vh;
-  }
+	#fractal_pane {
+		height:75vh;
+	}
 }

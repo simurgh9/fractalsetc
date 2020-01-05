@@ -4,7 +4,7 @@ class Control {
   }
 
   sliderEventHandler = (event) => {
-    let newDepth = event.target.value;
+    let newDepth = Number(event.target.value);
     let state = this.app.model.updateFractal(null, null, null, newDepth);
     this.app.setState(state);
   }
@@ -17,7 +17,7 @@ class Control {
 
   onWindowResize = () => {
     let state = this.app.model.updateFractal(
-    null,this.app.getWinWidth(), this.app.getWinHeight(), null);
+      null,this.app.getWinWidth(), this.app.getWinHeight(), null);
     this.app.setState(state);
   }
 }

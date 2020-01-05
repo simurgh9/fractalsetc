@@ -31,7 +31,7 @@ class FractalPane extends Component {
     context.beginPath();
     
     let vert = point.getVertices();
-    vert.push(vert[0]);
+    // vert.push(vert[0]);
     context.moveTo(vert[0][0], vert[0][1]);
 
     for (let i = 1; i < vert.length; i++) {
