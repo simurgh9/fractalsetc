@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cfa0ac6eac82b48e8fae5fc7d76ecb80",
+    "revision": "e3419b24dab5823b83e4e940417bf75e",
     "url": "/fractalsetc/build/index.html"
   },
   {
-    "revision": "bae7f78fad0e2579f730",
+    "revision": "33e51e37b2bb78fbf5bc",
     "url": "/fractalsetc/build/static/css/main.3834efac.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fractalsetc/build/static/js/2.2a3bdd68.chunk.js.LICENSE"
   },
   {
-    "revision": "bae7f78fad0e2579f730",
-    "url": "/fractalsetc/build/static/js/main.c3c71d9c.chunk.js"
+    "revision": "33e51e37b2bb78fbf5bc",
+    "url": "/fractalsetc/build/static/js/main.25c6410e.chunk.js"
   },
   {
     "revision": "f7dd4789e6aa2420461e",
