@@ -13,7 +13,7 @@ class Vector {
   addVector(ls) {
     let vertices = [this.start, this.end];
     debugger;
-    ls.add(new Point(this.start[0], this.start[1], 0, 0, vertices, true, null, null, 3));
+    ls.add(new Point(this.start[0], this.start[1], 0, 0, vertices, true, '#fffafa', null, 2));
     return ls;
   }
 }
