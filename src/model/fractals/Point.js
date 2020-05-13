@@ -65,7 +65,7 @@ class Point {
     this.strokeStyle = strokeStyle;
   }
 
-  rotate(rad, origin) {
+  rotate(rad, origin = null) {
     if (rad === 0)
       return;
 
