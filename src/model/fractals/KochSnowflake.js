@@ -10,9 +10,9 @@ class Vector {
     this.end = [this.start[0] + l * Math.cos(radians),
     this.start[1] + l * Math.sin(radians)];
   }
+
   addVector(ls) {
     let vertices = [this.start, this.end];
-    debugger;
     ls.add(new Point(this.start[0], this.start[1], 0, 0, vertices, true, '#fffafa', null, 2));
     return ls;
   }
@@ -20,21 +20,26 @@ class Vector {
 
 class KochSnowflake extends AbstractFractal {
   constructor(width, height, recursionDepth, origin) {
-    super(width, height, 7, origin);
+    super(width, height, 6, origin, true);
   }
+
   set(x, y, w, h, ls = new LinkedList(), r = 0) {
     let l = Math.min(w, h);
+    // left
     let seed = new Vector([x + l / 2, y + l / 10], l * (3 / 4), Math.PI * (2 / 3));
     ls = this.fractal(seed, ls, this.recursionDepth);
+    // right
     seed = new Vector([x + l * (35 / 40), y + l * (3 / 4)], l * (3 / 4), Math.PI * (-2 / 3));
     ls = this.fractal(seed, ls, this.recursionDepth);
+    // bottom
     seed = new Vector([x + l * (5 / 40), y + l * (3 / 4)], l * (3 / 4), 0);
-    return this.fractal(seed, ls, this.recursionDepth);
+    ls = this.fractal(seed, ls, this.recursionDepth);
+    return ls;
   }
 
   fractal(v, ls, recurLeft) {
     if (recurLeft === 0) {
-      return v.addVector(ls);  //Draw the current vector
+      return v.addVector(ls);  // Draw the current vector
     } else {
       let t1 = new Vector([v.start[0], v.start[1]], v.l / 3, v.radians);
       let t2 = new Vector([t1.end[0], t1.end[1]], v.l / 3, v.radians + Math.PI / 3);

@@ -10,7 +10,7 @@ import AbstractFractal from './AbstractFractal.js';
 
 class QuiltFractal extends AbstractFractal {
   constructor(width, height, recursionDepth, origin) {
-    super(width, height, recursionDepth, [0, 0]);
+    super(width, height, 7, origin, true);
   }
 
   set(x, y, w, h) {
