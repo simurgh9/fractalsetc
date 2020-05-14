@@ -119,6 +119,13 @@ class AbstractFractal {
   getRecursionDepth() {
     return this.recursionDepth;
   }
+
+  *linspace(lower, upper, num_points = 10) {
+    let step = (upper - lower) / (num_points - 1);
+    for (let i = 0; i < num_points; i++) {
+      yield (lower + (i * step));
+    }
+  }
 }
 
 export default AbstractFractal;
