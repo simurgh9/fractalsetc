@@ -16,9 +16,9 @@ The project was initialised using the [`create-react-app`][2]. All the package d
 
 Not much is needed to interact with this project. Some programming experience and a good sense of vanilla [Model View Control][5] architecture is enough. While it may be beneficial to already be familiar with Reactjs & Javascript, as long as you have some other programming experience this is not a bad place to start as this project was my attempt at learning and practising Javascript with Reactjs.
 
-## Add a Fractal
+## Add a Figure
 
-I made this keeping fractals in mind but realised it could be used to draw other interesting mathematical figures and interact with them. In any event, if you have a certain [fractal][6] in mind that you'd like to add to the site, you can do that as shown below.
+I made this keeping fractals in mind but realised it could be used to draw other interesting mathematical figures and interact with them. In any event, if you have a certain [fractal][6] or any other mathematical figure in mind that you'd like to add to the site, you can do that as shown below.
 
 I am assuming you know how to work git and get a copy of the project. Please do not forget to resolve the dependencies by running `npm install` in the project. Once you have everything set up, you may start the development server by running [`npm start`][7] in the project.
 
@@ -27,31 +27,29 @@ I am assuming you know how to work git and get a copy of the project. Please do 
 
 Substitute `path` for wherever you decide to put the project on your local machine.
 
-Navigate to the `path/fractaletc/src/model/fractals/`. Here you'll need to do two things. First, provide a file called `<YourFractalName>.js` and second, add an export statement for it in the `FractalIndex.js` file.
+Navigate to the `path/fractaletc/src/model/figures/`. Here you'll need to do two things. First, provide a file called `<YourFigureName>.js` and second, add an export statement for it in the `FigureIndex.js` file.
 
-### Implementation of `<YourFractalName>`.js
+### Implementation of `<YourFigureName>`.js
 
-`<YourFractalName>.js` must import `AbstractFractal` from [`./AbstractFractal.js`](src/model/fractals/AbstractFractal.js) and extend it to provide your own fractal. `<YourFractalName>.js` should also import `Point` and `LinkedList` from `./Point.js` and `./LinkedList.js`. The files `AbstractFractal.js, Point.js and LinkedList.js` are present at the same place, namely: `path/fractaletc/src/model/fractals/`. I could not find a built-in JavaScript implementation of a Linked List, so I made my own. I am not using simple JavaScript arrays because frequently appending to them gets slow and I did not want to keep track of the indices. The top of `<YourFractalName>.js` should look something like this,
+`<YourFigureName>.js` must import `AbstractFigure` from [`./AbstractFigure.js`](src/model/figures/AbstractFigure.js) and extend it to provide your own figure. `<YourFigureName>.js` should also import `Point` and `LinkedList` from `path/fractaletc/src/model/data_structures/DataStructureIndex.js`. The files `Vector.js, Point.js and LinkedList.js` are present at the same place. I could not find a built-in JavaScript implementation of a Linked List, so I made my own. I am not using simple JavaScript arrays because frequently appending to them gets slow and I did not want to keep track of the indices. The top of `<YourFigureName>.js` should look something like this,
 
 ```javascript
-import Point from './Point.js';
-import LinkedList from './LinkedList.js';
-import AbstractFractal from './AbstractFractal.js';
+import AbstractFigure from './AbstractFigure.js';
+import {LinkedList, Point} from '../data_structures/DataStructureIndex.js';
 ```
 
-By extending `AbstractFractal` you are required to implement two of it's functions.
+By extending `AbstractFigure` you are required to implement two of it's functions.
 
-1. `set(x, y, w, h, ls=new LinkedList(), r = 0)` returns a Linked List of points to be drawn on Fractal Pane.
-2. `getTitle()` returns the title of the fractal to be displayed in the header.
+1. `set(x, y, w, h, ls=new LinkedList(), r = 0)` returns a Linked List of points to be drawn on Figure Pane.
+2. `getTitle()` returns the title of the figure to be displayed in the header.
 
-Contents of `<YourFractalName>.js` should be like this,
+Contents of `<YourFigureName>.js` should be like this,
 
 ```javascript
-import Point from './Point.js';
-import LinkedList from './LinkedList.js';
-import AbstractFractal from './AbstractFractal.js';
+import AbstractFigure from './AbstractFigure.js';
+import {LinkedList, Point} from '../data_structures/DataStructureIndex.js';
 
-class <YourFractalName> extends AbstractFractal {
+class <YourFigureName> extends AbstractFigure {
     set(x, y, w, h, ls = new LinkedList(), r = 0) {
         // if (r >= this.recursionDepth) {
         //    let p = new Point(x, y, w, h);
@@ -62,18 +60,18 @@ class <YourFractalName> extends AbstractFractal {
     }
 
     getTitle() {
-        return '<Header title string for your fractal>';
+        return '<Header title string for your fractal/figure>';
     }
 }
 
-export default <YourFractalName>;
+export default <YourFigureName>;
 ```
 
-When `set(x, y, w, h, ls = new LinkedList(), r = 0)` is initially called, it is passed the `x` and `y` coordinates of the top-left, as well as width: `w` and height: `h` of the drawing space. The variable `ls` is to accumulate the points to be drawn and `r` to keep track of and limit the number of recursions. The implementation of `set(...)` does not have to be recursive but since fractals are easy to draw recursively it makes sense to have a recursive function which generates and appends the points to a Linked List `ls`, returned at the base case. This list of point objects will be eventually passed to the view to be rendered.
+When `set(x, y, w, h, ls = new LinkedList(), r = 0)` is initially called, it is passed the `x` and `y` coordinates of the top-left, as well as width: `w` and height: `h` of the drawing space. The variable `ls` is to accumulate the points to be drawn and `r` to keep track of and limit the number of recursions. The implementation of `set(...)` does not have to be recursive (e. g., for a parametric curve) but since fractals are easy to draw recursively it makes sense to have a recursive function which generates and appends the points to a Linked List `ls`, returned at the base case. This list of point objects will be eventually passed to the view to be rendered.
 
 ### Points
 
-Let's look closely at the [`Point.js`](src/model/fractals/Point.js) object. Here is how the constructor definition of `Point` looks like,
+Let's look closely at the [`Point.js`](src/model/data_structures/Point.js) object. Here is how the constructor definition of `Point` looks like,
 
 ```javascript
 class Point {
@@ -108,15 +106,15 @@ If you leave vertices `null` than by default the bounding box (square) is drawn.
 
 `toFill` variable decides whether or not to fill the point, `fillStyle` can be a hex colour, `strokeStyle` can also be a hex colour which is the colour of the point's outline and finally `lineWidth` decides the thickness of the point's outline which is `1` by default. If you pass `null` for the `fillStyle` then it is assigned a random colour whereas if you pass null for `strokeStyle` it is assigned whatever `fillStyle` is.
 
-### Exporting `<YourFractalName>`.js from `FractalIndex`.js
+### Exporting `<YourFigureName>`.js from `FigureIndex`.js
 
-Once you have your `path/fractaletc/src/model/fractals/<YourFractalName>.js`, you should add `export {default as <YourFractalName>} from './<YourFractalName>.js';` at the end of the file [`FractalIndex.js`](src/model/fractals/FractalIndex.js) in the same directory, e. g.,
+Once you have your `path/fractaletc/src/model/figures/<YourFigureName>.js`, you should add `export {default as <YourFigureName>} from './<YourFigureName>.js';` at the end of the file [`FigureIndex.js`](src/model/figures/FigureIndex.js) in the same directory, e. g.,
 
 ```javascript
 export {default as BoxFractal} from './BoxFractal.js';
 export {default as Mondrian} from './Mondrian.js';
 ...
-export {default as <YourFractalName>} from './<YourFractalName>.js';
+export {default as <YourFigureName>} from './<YourFigureName>.js';
 ```
 
 ## An Example Fractal
@@ -125,8 +123,8 @@ export {default as <YourFractalName>} from './<YourFractalName>.js';
 
 Let's draw this Sierpinski's Triangle.
 
-1. Added: `path/fractaletc/src/model/fractals/SierpinskiTri.js`,
-2. Added export in `FractalIndex.js`:
+1. Added: `path/fractaletc/src/model/figures/SierpinskiTri.js`,
+2. Added export in `FigureIndex.js`:
 
 ```javascript
 export {default as BoxFractal} from './BoxFractal.js';
@@ -137,11 +135,11 @@ export {default as SierpinskiTri} from './SierpinskiTri.js';
 3. Let's implement `SierpinskiTri.js`:
 
 ```javascript
-import Point from './Point.js';
-import LinkedList from './LinkedList.js';
-import AbstractFractal from './AbstractFractal.js';
+import AbstractFigure from './AbstractFigure.js';
+import {LinkedList, Point} from '../data_structures/DataStructureIndex.js';
 
-class SierpinskiTri extends AbstractFractal {
+
+class SierpinskiTri extends AbstractFigure {
   set(x, y, w, h, ls=new LinkedList(), r = 0) {
     if (r >= this.recursionDepth) {
       let p = new Point(x, y, w, h);
@@ -173,7 +171,7 @@ Now our `SierpinskiTri.js` has,
 ```javascript
 ...
 
-class SierpinskiTri extends AbstractFractal {
+class SierpinskiTri extends AbstractFigure {
   set(x, y, w, h, ls=new LinkedList(), r = 0) {
     if (r >= this.recursionDepth) {
       let vertices = [[x + w / 2, y], [x, y + h], [x + w, y + h]];
@@ -187,12 +185,12 @@ The website gets:
 
 <img src="./readme_media/sierpinski_triangle_static.png" width="350" />
 
-What if we wanted to change the upper bound for the number of recursions? We can look at the implementation of the [Box Fractal](src/model/fractals/BoxFractal.js),
+What if we wanted to change the upper bound for the number of recursions? We can look at the implementation of the [Box Fractal](src/model/figures/BoxFractal.js),
 
 ```javascript
 ...
 
-class BoxFractal extends AbstractFractal {
+class BoxFractal extends AbstractFigure {
   constructor(width, height, recursionDepth, origin) {
     super(width, height, 7, origin);
   }
@@ -206,7 +204,7 @@ Observe how in the constructor we immediately pass everything to the parent but 
 
 ## Conclusion
 
-I hope this is a good starting point for someone who wants to add a fractal to the website. Test your fractal with different recursion depths on the development site and try resizing the screen which should redraw the fractal according to the new dimensions. Once everything is good, push your changes to be published on the official site.
+I hope this is a good starting point for someone who wants to add a fractal/figure to the website. Test your figure with different recursion depths on the development site and try resizing the screen which should redraw the fractal according to the new dimensions. Once everything is good, make a pull request.
 
 ## License
 
