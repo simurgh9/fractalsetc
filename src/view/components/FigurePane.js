@@ -1,8 +1,8 @@
-import '../css/FractalPane.css';
+import '../css/FigurePane.css';
 
 import React, { Component } from 'react';
 
-class FractalPane extends Component {
+class FigurePane extends Component {
 
   plotPoints(toClearPreviousPlot=false) {
     let canvas = this.refs.canvas;
@@ -59,4 +59,4 @@ class FractalPane extends Component {
   }
 }
 
-export default FractalPane;
+export default FigurePane;

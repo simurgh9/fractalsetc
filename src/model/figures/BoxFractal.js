@@ -1,8 +1,8 @@
-import Point from './Point.js';
-import LinkedList from './LinkedList.js';
-import AbstractFractal from './AbstractFractal.js';
+import AbstractFigure from './AbstractFigure.js';
+import {LinkedList, Point} from '../data_structures/DataStructureIndex.js';
 
-class BoxFractal extends AbstractFractal {
+
+class BoxFractal extends AbstractFigure {
   constructor(width, height, recursionDepth, origin) {
     super(width, height, 7, origin);
   }

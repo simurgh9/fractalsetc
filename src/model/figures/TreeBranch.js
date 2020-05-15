@@ -1,6 +1,6 @@
-import Point from './Point.js';
-import LinkedList from './LinkedList.js';
-import AbstractFractal from './AbstractFractal.js';
+import AbstractFigure from './AbstractFigure.js';
+import {LinkedList, Point} from '../data_structures/DataStructureIndex.js';
+
 
 const BRANCHES = 3;
 const MIN_ANGLE = 0;
@@ -8,7 +8,7 @@ const MAX_ANGLE = Math.PI / 4;
 const MIN_LENGTH = 0.30;
 const MAX_LENGTH = 0.90;
 
-class TreeBranch extends AbstractFractal {
+class TreeBranch extends AbstractFigure {
   constructor(width, height, recursionDepth, origin) {
     super(width, height, 10, origin);
   }

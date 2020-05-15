@@ -1,4 +1,4 @@
-import * as Fractals from './fractals/FractalIndex.js';
+import * as Figures from './figures/FigureIndex.js';
 
 class Model {
   constructor(width, height,
@@ -15,16 +15,16 @@ class Model {
   } // constructor ends here
 
   setOptions() {
-    for (let name in Fractals) {
-      let currFrac = new Fractals[name](0, 0, 0, [0, 0]);
+    for (let name in Figures) {
+      let currFrac = new Figures[name](0, 0, 0, [0, 0]);
       this.options[name] = currFrac.getTitle();
     }
-    this.setNameAndFractal(Object.keys(this.options)[0]);
+    this.setNameAndFigure(Object.keys(this.options)[0]);
   }
 
-  setNameAndFractal(name) {
+  setNameAndFigure(name) {
     this.name = name;
-    this.fractal = new Fractals[
+    this.fractal = new Figures[
       this.name](
         this.width,
         this.height,
@@ -35,11 +35,11 @@ class Model {
   
   setRecursionDepth(depth) {
     this.recursionDepth = depth;
-    this.getFractal().setRecursionDepth(this.recursionDepth);
+    this.getFigure().setRecursionDepth(this.recursionDepth);
   }
 
   getReactState() {
-    return this.getFractal().getReactState();
+    return this.getFigure().getReactState();
   }
 
   getName() {
@@ -54,22 +54,22 @@ class Model {
     return this.options;
   }
 
-  getFractal() {
+  getFigure() {
     return this.fractal;
   }
 
   setDimensions(w, h) {
     this.width = w;
     this.height = h;
-    this.getFractal().setDimensions(this.width, this.height);
+    this.getFigure().setDimensions(this.width, this.height);
   }
 
-  updateFractal(name, width, height, depth) {
+  updateFigure(name, width, height, depth) {
     this.width  = width  ? width  : this.width;
     this.height = height ? height : this.height;
     
     if(name !== null && this.getName() !== name) {
-      this.setNameAndFractal(name);
+      this.setNameAndFigure(name);
     } else if (depth !== null && this.getRecursionDepth() !== depth) {
       this.setRecursionDepth(depth);
     } else {

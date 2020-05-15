@@ -1,8 +1,8 @@
-import Point from './Point.js';
-import LinkedList from './LinkedList.js';
-import AbstractFractal from './AbstractFractal.js';
+import AbstractFigure from './AbstractFigure.js';
+import {LinkedList, Point} from '../data_structures/DataStructureIndex.js';
 
-class SierpinskiTri extends AbstractFractal {
+
+class SierpinskiTri extends AbstractFigure {
   set(x, y, w, h, ls=new LinkedList(), r = 0) {
     if (r >= this.recursionDepth) {
       let vertices = [[x + w / 2, y], [x, y + h], [x + w, y + h]];
