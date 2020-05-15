@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Model from '../model/Model.js';
 import Control from '../control/Control.js';
-import { FractalPane, Header } from './components/ComponentIndex.js';
+import { FigurePane, Header } from './components/ComponentIndex.js';
 import './css/App.css';
 
 class App extends Component {
@@ -34,7 +34,7 @@ class App extends Component {
           dropdownOptions={this.model.getOptions()}
           title={this.state.title}
         />
-        <FractalPane fractal={this.state} />
+        <FigurePane fractal={this.state} />
       </div>
     );
   }
