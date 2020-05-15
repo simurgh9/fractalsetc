@@ -4,11 +4,11 @@
  https://fractaltales.blogspot.com/2013/08/self-similar-fractals-quilts-and.html
 */
 
-import Point from './Point.js';
-import LinkedList from './LinkedList.js';
-import AbstractFractal from './AbstractFractal.js';
+import AbstractFigure from './AbstractFigure.js';
+import {LinkedList, Point} from '../data_structures/DataStructureIndex.js';
 
-class QuiltFractal extends AbstractFractal {
+
+class QuiltFractal extends AbstractFigure {
   constructor(width, height, recursionDepth, origin) {
     super(width, height, 7, origin, true);
   }

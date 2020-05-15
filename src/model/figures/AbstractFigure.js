@@ -1,10 +1,10 @@
 // eslint-disable-next-line
-import Point from './Point.js';
+import {Point} from '../data_structures/DataStructureIndex.js';
 
 
-class AbstractFractal {
+class AbstractFigure {
   constructor(width, height, maxDepth, origin, toCenterFractal = false) {
-    if (this.constructor === AbstractFractal) {
+    if (this.constructor === AbstractFigure) {
       throw new Error("Abstract classes can't be instantiated.");
     }
     this.maxDepth = maxDepth;
@@ -128,4 +128,4 @@ class AbstractFractal {
   }
 }
 
-export default AbstractFractal;
+export default AbstractFigure;

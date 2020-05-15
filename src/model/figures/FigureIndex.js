@@ -1,3 +1,4 @@
+export {default as Test} from './Test.js';
 export {default as TreeBranch} from './TreeBranch.js';
 export {default as KochSnowflake} from './KochSnowflake.js';
 export {default as SierpinskiTri} from './SierpinskiTri.js';

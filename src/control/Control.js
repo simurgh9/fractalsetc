@@ -5,18 +5,18 @@ class Control {
 
   sliderEventHandler = (event) => {
     let newDepth = Number(event.target.value);
-    let state = this.app.model.updateFractal(null, null, null, newDepth);
+    let state = this.app.model.updateFigure(null, null, null, newDepth);
     this.app.setState(state);
   }
 
   dropdownEventHandler = (event) => {
     let newName = event.target.value;
-    let state = this.app.model.updateFractal(newName, null, null, null);
+    let state = this.app.model.updateFigure(newName, null, null, null);
     this.app.setState(state);
   }
 
   onWindowResize = () => {
-    let state = this.app.model.updateFractal(
+    let state = this.app.model.updateFigure(
       null,this.app.getWinWidth(), this.app.getWinHeight(), null);
     this.app.setState(state);
   }

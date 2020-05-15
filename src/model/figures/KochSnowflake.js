@@ -1,24 +1,8 @@
-import Point from './Point.js';
-import LinkedList from './LinkedList.js';
-import AbstractFractal from './AbstractFractal.js';
+import AbstractFigure from './AbstractFigure.js';
+import {LinkedList, Vector} from '../data_structures/DataStructureIndex.js';
 
-class Vector {
-  constructor(start, l, radians) {
-    this.start = start;
-    this.l = l;
-    this.radians = radians;
-    this.end = [this.start[0] + l * Math.cos(radians),
-    this.start[1] + l * Math.sin(radians)];
-  }
 
-  addVector(ls) {
-    let vertices = [this.start, this.end];
-    ls.add(new Point(this.start[0], this.start[1], 0, 0, vertices, true, '#fffafa', null, 2));
-    return ls;
-  }
-}
-
-class KochSnowflake extends AbstractFractal {
+class KochSnowflake extends AbstractFigure {
   constructor(width, height, recursionDepth, origin) {
     super(width, height, 6, origin, true);
   }
