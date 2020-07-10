@@ -38,7 +38,7 @@ import AbstractFigure from './AbstractFigure.js';
 import {LinkedList, Point} from '../data_structures/DataStructureIndex.js';
 ```
 
-By extending `AbstractFigure` you are required to implement two of it's functions.
+By extending `AbstractFigure` you are required to implement two of its functions.
 
 1. `set(x, y, w, h, ls=new LinkedList(), r = 0)` returns a Linked List of points to be drawn on Figure Pane.
 2. `getTitle()` returns the title of the figure to be displayed in the header.
@@ -81,7 +81,7 @@ class Point {
 ...
 ```
 
-Every point must have an x,y coordinate along with a width and height passed as `new Point(x, y, width, height)`. `vertices` is an array of vertices which will be connected by a line to draw a single point. This allows you to draw points in different ways. Each element in `vertices` should be defined as a function of Point's `x, y, w, h`. You may think of a point as a bounding box. For example, if you have a point with `x, y, w, h` where `x, y` are it's top-left coordinates and `w, h` it's width and height respectively then to draw the bounding box we can have the following vertices:
+Every point must have an x,y coordinate along with a width and height passed as `new Point(x, y, width, height)`. `vertices` is an array of vertices which will be connected by a line to draw a single point. This allows you to draw points in different ways. Each element in `vertices` should be defined as a function of Point's `x, y, w, h`. You may think of a point as a bounding box. For example, if you have a point with `x, y, w, h` where `x, y` are its top-left coordinates and `w, h` its width and height respectively then to draw the bounding box we can have the following vertices:
 
 ```javascript
 [
