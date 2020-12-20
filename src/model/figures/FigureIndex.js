@@ -1,3 +1,4 @@
+export {default as HeighwayDragon} from './HeighwayDragon.js';
 export {default as ParametricTornado} from './ParametricTornado.js';
 export {default as ParametricFish} from './ParametricFish.js';
 export {default as TreeBranch} from './TreeBranch.js';

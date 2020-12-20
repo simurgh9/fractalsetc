@@ -52,7 +52,7 @@ class FigurePane extends Component {
     height = this.props.fractal.height;
     return <canvas
              id='fractal_pane'
-             ref="canvas"
+             ref='canvas'
              width={width}
              height={height}
            />;

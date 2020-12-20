@@ -1,5 +1,5 @@
 import AbstractFigure from './AbstractFigure.js';
-import {LinkedList, Vector} from '../data_structures/DataStructureIndex.js';
+import {LinkedList, Vector, Point} from '../data_structures/DataStructureIndex.js';
 
 
 class KochSnowflake extends AbstractFigure {
@@ -23,12 +23,14 @@ class KochSnowflake extends AbstractFigure {
 
   fractal(v, ls, recurLeft) {
     if (recurLeft === 0) {
-      return v.addVector(ls);  // Draw the current vector
+      let vertices = v.cords();
+      ls.add(new Point(vertices[0][0], vertices[0][1], 0, 0, vertices, true, '#fffafa', null, 2));
+      return ls;
     } else {
-      let t1 = new Vector([v.start[0], v.start[1]], v.l / 3, v.radians);
-      let t2 = new Vector([t1.end[0], t1.end[1]], v.l / 3, v.radians + Math.PI / 3);
-      let t3 = new Vector([t2.end[0], t2.end[1]], v.l / 3, v.radians - Math.PI / 3);
-      let t4 = new Vector([t3.end[0], t3.end[1]], v.l / 3, v.radians);
+      let t1 = new Vector([...v.start], v.l / 3, v.radians);
+      let t2 = new Vector([...t1.end], v.l / 3, v.radians + Math.PI / 3);
+      let t3 = new Vector([...t2.end], v.l / 3, v.radians - Math.PI / 3);
+      let t4 = new Vector([...t3.end], v.l / 3, v.radians);
       ls = this.fractal(t1, ls, recurLeft - 1);
       ls = this.fractal(t2, ls, recurLeft - 1);
       ls = this.fractal(t3, ls, recurLeft - 1);
