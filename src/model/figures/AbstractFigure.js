@@ -8,16 +8,38 @@ class AbstractFigure {
       throw new Error("Abstract classes can't be instantiated.");
     }
     this.maxDepth = maxDepth;
-    this.points = null;
     this.width = width;
     this.height = height;
     this.origin = origin;
     this.toCenterFractal = toCenterFractal;
-    this.depthToPoints = new Array(10 + 1);
+    this.wipeOutDepthToPointArray();
     this.recursionDepth = -1;
+    this.setChildVarsBeforeSettingPoints();
     this.setDepthToDefault(); // initial depth
   }
 
+  setChildVarsBeforeSettingPoints() {
+    /**
+     * Use this function to initialize any child instance variables
+     * that are needed before setting points. This function is needed
+     * since as soon as the super(...) in child's constructor is
+     * called to call this class's constructor we see that the
+     * following chain,
+     *
+     * this.setDepthToDefault()
+     *   this.setRecursionDepth()
+     *     this.setPoints()
+     *       this.set()
+     *
+     * gets called to set points before any of the child instance
+     * variables after the super(...) have a chance of being
+     * initialised. However, this function is called before setting
+     * any points therefore, any child instance variables set in this
+     * function are available to that first call to this.set(...).
+     */
+    return;
+  }
+  
   setDepthToDefault() {
     this.setRecursionDepth(Math.round(this.maxDepth / 2));
   }
@@ -47,7 +69,7 @@ class AbstractFigure {
   }
 
   wipeOutDepthToPointArray() {
-    this.depthToPoints = new Array(10 + 1);
+    this.depthToPoints = new Array(this.maxDepth);
   }
 
   set(/* x, y, w, h, ls=new LinkedList(), r = 0 */) {
