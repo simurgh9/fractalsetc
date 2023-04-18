@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/fractalsetc/static/css/main.42efe9ec.css",
+    "main.js": "/fractalsetc/static/js/main.1a402c53.js",
+    "index.html": "/fractalsetc/index.html",
+    "main.42efe9ec.css.map": "/fractalsetc/static/css/main.42efe9ec.css.map",
+    "main.1a402c53.js.map": "/fractalsetc/static/js/main.1a402c53.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.42efe9ec.css",
+    "static/js/main.1a402c53.js"
+  ]
+}
