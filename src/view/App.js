@@ -1,31 +1,44 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Model from '../model/Model.js';
 import Control from '../control/Control.js';
 import { FigurePane, Header } from './components/ComponentIndex.js';
 import './css/App.css';
 
 class App extends Component {
-
   constructor(props) {
     super(props);
-    this.MARGIN = 0;
     this.control = new Control(this);
-    this.model = new Model(this.getWinWidth(), this.getWinHeight());
+    this.model = new Model(0, 0);
     this.state = this.model.getReactState();
-    window.addEventListener("resize", this.control.onWindowResize);
+    window.addEventListener('resize', this.control.onWindowResize);
   }
 
-  getWinWidth() {
-    return window.innerWidth;
+  getCanvasWidth() {
+    let main = document.getElementsByTagName('canvas')[0];
+    return main.getBoundingClientRect().width;
   }
 
-  getWinHeight() {
-    return window.innerHeight;
+  getCanvasHeight() {
+    let main = document.getElementsByTagName('canvas')[0];
+    return main.getBoundingClientRect().height;
   }
-  
-  render() {
+
+  componentDidMount() {
+    let ob = new ResizeObserver(this.control.onWindowResize);
+    ob.observe(document.getElementsByTagName('canvas')[0]);
+    this.setState(
+      this.model.updateFigure(
+        null,
+        this.getCanvasWidth(),
+        this.getCanvasHeight(),
+        null
+      )
+    );
+  }
+
+  render() { // https://stackoverflow.com/a/54666349/12035739
     return (
-      <div className="App">
+      <Fragment>
         <Header
           sliderEventHandler={this.control.sliderEventHandler}
           sliderInitialValue={this.state.recursionDepth}
@@ -34,8 +47,10 @@ class App extends Component {
           dropdownOptions={this.model.getOptions()}
           title={this.state.title}
         />
-        <FigurePane fractal={this.state} />
-      </div>
+        <main>
+          <FigurePane figure={this.state} />
+        </main>
+      </Fragment>
     );
   }
 }

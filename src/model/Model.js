@@ -8,7 +8,7 @@ class Model {
     this.width = width;
     this.height = height;
     this.origin = origin;
-    this.fractal = null;
+    this.figure = null;
     
     this.options = {};
     this.setOptions();
@@ -24,13 +24,13 @@ class Model {
 
   setNameAndFigure(name) {
     this.name = name;
-    this.fractal = new Figures[
+    this.figure = new Figures[
       this.name](
         this.width,
         this.height,
         this.DEFAULT_MAX_DEPTH,
         this.origin);
-    this.recursionDepth = this.fractal.getRecursionDepth();
+    this.recursionDepth = this.figure.getRecursionDepth();
   }
   
   setRecursionDepth(depth) {
@@ -55,7 +55,7 @@ class Model {
   }
 
   getFigure() {
-    return this.fractal;
+    return this.figure;
   }
 
   setDimensions(w, h) {

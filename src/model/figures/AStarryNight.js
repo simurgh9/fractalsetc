@@ -13,7 +13,7 @@ class AStarryNight extends AbstractFigure {
 
   set(x, y, w, h, ls = new LinkedList(), r = 0) {
     let starry = this.pixels();
-    let c = w < h ? w / COL : h / ROW;
+    let c = 0.99 * Math.min(w / COL, h / ROW);
     let doneness = this.recursionDepth / this.maxDepth;
     for (let i = 0; i < starry.length; i++) {
       for (let j = 0; j < starry[i].length; j++) {

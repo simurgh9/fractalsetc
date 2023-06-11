@@ -1,5 +1,4 @@
 import * as ReactDOMClient from 'react-dom/client';
-import './view/css/index.css';
 import App from './view/App';
 
 const container = document.getElementById('root');

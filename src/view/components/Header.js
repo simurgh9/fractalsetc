@@ -1,24 +1,20 @@
-import '../css/Header.css';
-
 import Slider from './Slider.js';
 import Dropdown from './Dropdown.js';
 import React, { Component } from 'react';
 
-
 class Header extends Component {
   render() {
     return (
-      <h1 id='header'> {
-        <a
-          target='_blank'
-          rel='noopener noreferrer'
-          href={
-            'https://duckduckgo.com/?q='
-              + this.props.title
-          }>
-          {this.props.title}
-        </a>
-      }
+      <header>
+        {
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={'https://duckduckgo.com/?q=' + this.props.title}
+          >
+            {this.props.title}
+          </a>
+        }
         <Slider
           eventHandler={this.props.sliderEventHandler}
           sliderInitialValue={this.props.sliderInitialValue}
@@ -28,7 +24,7 @@ class Header extends Component {
           eventHandler={this.props.dropdownEventHandler}
           dropdownOptions={this.props.dropdownOptions}
         />
-      </h1>
+      </header>
     );
   }
 }
