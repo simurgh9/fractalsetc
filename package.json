@@ -1,6 +1,6 @@
 {
   "name": "fractalsetc",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "homepage": "https://tashfeen.org/fractalsetc",
   "dependencies": {
@@ -14,7 +14,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "react-scripts": "^5.0.0"
+    "react-scripts": "^5.0.0",
+    "@babel/plugin-proposal-private-property-in-object": "7.21.00"
   },
   "overrides": {
     "nth-check": "^2.0.1"
