@@ -5,7 +5,7 @@
 */
 
 import AbstractFigure from './AbstractFigure.js';
-import {LinkedList, Point} from '../data_structures/DataStructureIndex.js';
+import { Point } from '../data_structures/DataStructureIndex.js';
 
 
 class QuiltFractal extends AbstractFigure {
@@ -23,10 +23,10 @@ class QuiltFractal extends AbstractFigure {
     return this.rotatePoints(points, 4, this.getRecursionDepth());
   }
 
-  markPoints(x, y, l, ls = new LinkedList(), r = 0) {
+  markPoints(x, y, l, ls = [], r = 0) {
     if (r >= this.recursionDepth) {
       let p = new Point(x, y, l, l, null, false, '#afff14');
-      ls.add(p);
+      ls.push(p);
       return ls;
     }
 
@@ -48,7 +48,7 @@ class QuiltFractal extends AbstractFigure {
     
     let indices = this.subsetIndices(starting_block, r);
     let pointsSliced = points.slice(indices[0], indices[1]);
-    let O = pointsSliced.tail();
+    let O = pointsSliced[pointsSliced.length - 1];
     O = [O.x + O.w/2, O.y + O.h/2];
     if (starting_block === 4)
       this.rotateAll(pointsSliced, O);

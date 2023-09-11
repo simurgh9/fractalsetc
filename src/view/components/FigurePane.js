@@ -31,7 +31,8 @@ class FigurePane extends Component {
     context.closePath();
     context.stroke();
 
-    if (point.fill()) context.fill();
+    // https://stackoverflow.com/q/30574967/12035739
+    point.fill() && context.fill();
   }
 
   render() {

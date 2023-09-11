@@ -5,6 +5,7 @@ class Point {
   constructor(x, y, width, height, vertices = null,
     toFill = true, fillStyle = null,
     strokeStyle = null, lineWidth = 1) {
+    this.prev = null;  // for LinkedList
     this.x = x;
     this.y = y;
     this.w = width;
@@ -16,6 +17,11 @@ class Point {
     this.strokeStyle = strokeStyle ? strokeStyle : this.fillStyle;
   }
 
+  setPrev(prev) {
+    this.prev = prev;
+    return this;
+  }
+  
   square() {
     return [
       [this.x, this.y],                   // top left corner

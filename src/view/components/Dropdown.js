@@ -8,7 +8,7 @@ class Dropdown extends Component {
 
     optionsList.forEach((op, i) => {
       this.options[i] = (
-        <option key={i} value={op[0]}>
+        <option name={i} key={i} value={op[0]}>
           {op[1]}
         </option>
       );
@@ -16,7 +16,7 @@ class Dropdown extends Component {
   }
 
   render() {
-    return <select onChange={this.props.eventHandler}>{this.options}</select>;
+    return <select name='Dropdown' onChange={this.props.eventHandler}>{this.options}</select>;
   }
 }
 

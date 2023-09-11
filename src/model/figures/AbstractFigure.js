@@ -58,10 +58,12 @@ class AbstractFigure {
 
   setPoints() {
     if (this.pointsNeedBeSet()) {
-      // console.log('I set '+ this.getTitle() + ' for ' + this.getRecursionDepth());
+      // let start = this.milliseconds();
       this.depthToPoints[this.getRecursionDepth()] = this.set(
         this.origin[0], this.origin[1],
         this.width, this.height);
+      // let end = this.milliseconds() - start
+      // console.log(`Depth ${this.getRecursionDepth()} took ${end} ms`);
       if (this.toCenterFractal) {
         this.centerFractal();
       }
@@ -147,6 +149,10 @@ class AbstractFigure {
     for (let i = 0; i < num_points; i++) {
       yield (lower + (i * step));
     }
+  }
+
+  milliseconds() {
+    return Math.ceil(new Date().getTime());
   }
 }
 
