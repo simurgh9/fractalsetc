@@ -201,7 +201,7 @@ Observe how in the constructor we immediately pass everything to the parent but 
 
 > `npm audit` is broken for front-end tooling by design
 
-The is a quote from a [bug report](https://github.com/facebook/create-react-app/issues/11174) at Facebook's official repository for `create-react-app`. We're then linked to the following blog-post,
+This is a quote from a [bug report](https://github.com/facebook/create-react-app/issues/11174) at Facebook's official repository for `create-react-app`. We're then linked to the following blog-post,
 
 [npm audit: Broken by Design](https://overreacted.io/npm-audit-broken-by-design/)
 
