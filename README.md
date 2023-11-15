@@ -1,12 +1,7 @@
-# Fractals Et Cetera
+<p align="center"><img src="./readme_media/gogh.png" width="512px" alt="Vincent Van Gogh's Starry Night" alt="Vincent Van Gogh's Starry Night" /></p>
+<h1 align="center">Fractals Et Cetera</h1>
 
-<p align="middle">
-  <img src="./readme_media/sierpinski_triangle.gif" width="250" />
-  <img src="./readme_media/box.gif" width="250" />
-  <img src="./readme_media/piet.gif" width="250" />
-</p>
-
-This was just a project that I decided on to get better with [React][0] and [JavaScript][1] because I had not done much programming with either. As my interest in web-development peaked, I decided on making an "interesting" website.
+This was just a project that I decided on to get better with [React][0] and [JavaScript][1] because I had not done much programming with either. As my interest in web-development piqued, I decided on making an "interesting" website.
 
 ## Getting Started
 
@@ -201,6 +196,18 @@ class BoxFractal extends AbstractFigure {
 ```
 
 Observe how in the constructor we immediately pass everything to the parent but instead of passing `recursionDepth`, we pass 7. This will cause the maximum number of recursions to be 7.
+
+## Pitfalls
+
+> `npm audit` is broken for front-end tooling by design
+
+The is a quote from a [bug report](https://github.com/facebook/create-react-app/issues/11174) at Facebook's official repository for `create-react-app`. We're then linked to the following blog-post,
+
+[npm audit: Broken by Design](https://overreacted.io/npm-audit-broken-by-design/)
+
+However, even the audit command given in the bug report is now deprecated. Instead of `npm audit --production`, we are now to use `npm audit --omit=dev`.
+
+In future, time permitting, I will move this project to a different bundler, e. g., [Vite](https://vitejs.dev/).
 
 ## Conclusion
 
