@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Model from '../model/Model.js';
 import Control from '../control/Control.js';
-import { FigurePane, Header } from './components/ComponentIndex.js';
+import { FigurePane, Header } from './components/ComponentIndex.jsx';
 import './css/App.css';
 
 class App extends Component {

@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 
 class FigurePane extends Component {
+  constructor(props) {
+    super(props);
+    this.canvasRef = React.createRef();
+  }
+  
   plotPoints(toClearPreviousPlot = false) {
-    let canvas = this.refs.canvas;
+    let canvas = this.canvasRef.current;
     const context = canvas.getContext('2d');
     if (toClearPreviousPlot)
       context.clearRect(0, 0, canvas.width, canvas.height);
@@ -38,7 +43,7 @@ class FigurePane extends Component {
   render() {
     let w = this.props.figure.width;
     let h = this.props.figure.height;
-    return <canvas ref="canvas" width={w} height={h} />;
+    return <canvas ref={this.canvasRef} width={w} height={h} />;
   }
 }
 

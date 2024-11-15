@@ -1,5 +1,4 @@
-import Slider from './Slider.js';
-import Dropdown from './Dropdown.js';
+import { Slider, Dropdown } from './ComponentIndex.jsx';
 import React, { Component } from 'react';
 
 class Header extends Component {

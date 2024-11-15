@@ -1,7 +1,7 @@
 <p align="center">
   <img
     width="512px"
-    src="./readme_media/gogh.png"
+    src="./media/gogh.png"
     alt="Vincent Van Gogh's Starry Night"
     alt="Vincent Van Gogh's Starry Night"
   />
@@ -17,10 +17,12 @@ making an "interesting" website.
 
 ## Getting Started
 
-The project was initialised using the [`create-react-app`][3]. All the
-package dependencies should be easily acquired by navigating into the
-project and running `npm install`. For more about [Node][4] and [Node
-Package Manager (NPM)][5] you may visit their site.
+The project was initialised using the [`create-react-app`][3] though
+we have since switched over to [Vite][11]. See the _Pitfalls_ section
+bellow for details on this decision. All the package dependencies
+should be easily acquired by navigating into the project and running
+`npm install`. For more about [Node][4] and [Node Package Manager
+(NPM)][5] you may visit their site.
 
 ## Prerequisites
 
@@ -43,7 +45,7 @@ can do that as shown below.
 I am assuming you know how to work git and get a copy of the
 project. Please do not forget to resolve the dependencies by running
 `npm install` in the project. Once you have everything set up, you may
-start the development server by running [`npm start`][8] in the
+start the development server by running [`npm run dev`][8] in the
 project.
 
 ### File Setup
@@ -199,7 +201,7 @@ export {default as <YourFigureName>} from './<YourFigureName>.js';
 
 ## An Example Fractal
 
-![Sierpinski Triangle](./readme_media/sierpinski_progression.png "Sierpinksi Triangle")
+![Sierpinski Triangle](./media/sierpinski_progression.png "Sierpinksi Triangle")
 
 Let's draw this Sierpinski's Triangle.
 
@@ -242,7 +244,7 @@ export default SierpinskiTri;
 
 This gets us:
 
-<img src="./readme_media/sierpinski_square.png" width="350" />
+<img src="./media/sierpinski_square.png" width="350" />
 
 But we want to draw triangles as points instead of default squares, so
 we'll pass vertices as,
@@ -272,7 +274,7 @@ class SierpinskiTri extends AbstractFigure {
 
 The website gets:
 
-<img src="./readme_media/sierpinski_triangle_static.png" width="350" />
+<img src="./media/sierpinski_triangle_static.png" width="350" />
 
 What if we wanted to change the upper bound for the number of
 recursions? We can look at the implementation of the [Box Fractal](src/model/figures/BoxFractal.js),
@@ -308,8 +310,10 @@ However, even the audit command given in the bug report is now
 deprecated. Instead of `npm audit --production`, we are now to use
 `npm audit --omit=dev`.
 
-In future, time permitting, I will move this project to a different
-bundler, e. g., [Vite][11].
+~~In future, time permitting, I will move this project to a different
+bundler, e. g., [Vite][11].~~
+
+We have moved to [Vite][11].
 
 ## Conclusion
 
@@ -325,7 +329,7 @@ Fractals Et Cetera is a website or a web application that
 interactively showcases different mathematical figures such as
 fractals.
 
-Copyright (C) 2019--2023 Ahmad Tashfeen
+Copyright (C) 2019--2025 Ahmad Tashfeen
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -347,7 +351,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 [5]: https://www.npmjs.com/about
 [6]: https://bit.ly/2RS85cM
 [7]: https://en.wikipedia.org/wiki/Fractal
-[8]: https://create-react-app.dev/docs/getting-started/#scripts
+[8]: https://vite.dev/guide/#command-line-interface
 [9]: https://github.com/facebook/create-react-app/issues/11174
 [10]: https://overreacted.io/npm-audit-broken-by-design/
 [11]: https://vitejs.dev/
