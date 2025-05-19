@@ -1,5 +1,5 @@
 import AbstractFigure from './AbstractFigure.js';
-import {LinkedList, Vector, Point} from '../data_structures/DataStructureIndex.js';
+import {LinkedList, Vector} from '../data_structures/DataStructureIndex.js';
 
 
 class KochSnowflake extends AbstractFigure {
@@ -10,27 +10,26 @@ class KochSnowflake extends AbstractFigure {
   set(x, y, w, h, ls = new LinkedList(), r = 0) {
     let l = Math.min(w, h);
     // left
-    let seed = new Vector([x + l / 2, y + l / 10], l * (3 / 4), Math.PI * (2 / 3));
+    let seed = new Vector(l * (3 / 4), Math.PI * (2 / 3), [x + l / 2, y + l / 10]);
     ls = this.fractal(seed, ls, this.recursionDepth);
     // right
-    seed = new Vector([x + l * (35 / 40), y + l * (3 / 4)], l * (3 / 4), Math.PI * (-2 / 3));
+    seed = new Vector(l * (3 / 4), Math.PI * (-2 / 3), [x + l * (35 / 40), y + l * (3 / 4)]);
     ls = this.fractal(seed, ls, this.recursionDepth);
     // bottom
-    seed = new Vector([x + l * (5 / 40), y + l * (3 / 4)], l * (3 / 4), 0);
+    seed = new Vector(l * (3 / 4), 0, [x + l * (5 / 40), y + l * (3 / 4)]);
     ls = this.fractal(seed, ls, this.recursionDepth);
     return ls;
   }
 
   fractal(v, ls, recurLeft) {
     if (recurLeft === 0) {
-      let vertices = v.cords();
-      ls.add(new Point(vertices[0][0], vertices[0][1], 0, 0, vertices, true, '#fffafa', null, 2));
+      ls.add(v.toPoint(true, '#fffafa', null, 2));
       return ls;
     } else {
-      let t1 = new Vector([...v.start], v.l / 3, v.radians);
-      let t2 = new Vector([...t1.end], v.l / 3, v.radians + Math.PI / 3);
-      let t3 = new Vector([...t2.end], v.l / 3, v.radians - Math.PI / 3);
-      let t4 = new Vector([...t3.end], v.l / 3, v.radians);
+      let t1 = new Vector(v.l / 3, v.radians, [...v.origin]);
+      let t2 = new Vector(v.l / 3, v.radians + Math.PI / 3, t1.cartesian());
+      let t3 = new Vector(v.l / 3, v.radians - Math.PI / 3, t2.cartesian());
+      let t4 = new Vector(v.l / 3, v.radians, t3.cartesian());
       ls = this.fractal(t1, ls, recurLeft - 1);
       ls = this.fractal(t2, ls, recurLeft - 1);
       ls = this.fractal(t3, ls, recurLeft - 1);

@@ -1,5 +1,5 @@
 import AbstractFigure from './AbstractFigure.js';
-import { LinkedList, Vector, Point } from '../data_structures/DataStructureIndex.js';
+import { LinkedList, Vector } from '../data_structures/DataStructureIndex.js';
 
 const SCALE = 0.43;
 
@@ -10,27 +10,26 @@ class HeighwayDragon extends AbstractFigure {
 
   set(x, y, w, h, ls = new LinkedList(), r = 0) {
     let l = SCALE * Math.min(w, h);
-    let seed = new Vector([x, y], l, 0);
+    let seed = new Vector(l, 0, [x, y]);
     ls = this.dragon(seed, ls, this.recursionDepth, 'red');
-    seed = new Vector([x, y], l, Math.PI / 2);
+    seed = new Vector(l, Math.PI / 2, [x, y]);
     ls = this.dragon(seed, ls, this.recursionDepth, 'green');
-    seed = new Vector([x, y], l, Math.PI);
+    seed = new Vector(l, Math.PI, [x, y]);
     ls = this.dragon(seed, ls, this.recursionDepth, 'blue');
-    seed = new Vector([x, y], l, 1.5 * Math.PI);
+    seed = new Vector(l, 1.5 * Math.PI, [x, y]);
     return this.dragon(seed, ls, this.recursionDepth, 'yellow');
   }
 
   dragon(v, ls, recurLeft, color, clockwise = true) {
     if (recurLeft === 0) {
-      let vertices = v.cords();
-      ls.add(new Point(vertices[0][0], vertices[0][1], 0, 0, vertices, true, color));
+      ls.add(v.toPoint(true, color));
       return ls;
     } else {
       let radians = clockwise ? Math.PI / 4 : -Math.PI / 4;
-      let t1 = new Vector([...v.start], this.len(v.l), v.radians + radians);
+      let t1 = new Vector(this.len(v.l), v.radians + radians, [...v.origin]);
       ls = this.dragon(t1, ls, recurLeft - 1, color, true);
       radians = clockwise ? -Math.PI / 4 : Math.PI / 4;
-      let t2 = new Vector([...t1.end], this.len(v.l), v.radians + radians);
+      let t2 = new Vector(this.len(v.l), v.radians + radians, t1.cartesian());
       return this.dragon(t2, ls, recurLeft - 1, color, false);
     }
   }
